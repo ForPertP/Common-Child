@@ -1,3 +1,16 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+/*
+ * Complete the 'commonChild' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts following parameters:
+ *  1. STRING s1
+ *  2. STRING s2
+ */
+
 int commonChild(string s1, string s2)
 {
     int n = s1.size();
