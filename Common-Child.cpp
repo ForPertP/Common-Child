@@ -45,3 +45,23 @@ int commonChild(string s1, string s2)
 
     return vec[n-1][n-1];
 }
+
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    string s1;
+    getline(cin, s1);
+
+    string s2;
+    getline(cin, s2);
+
+    int result = commonChild(s1, s2);
+
+    fout << result << "\n";
+
+    fout.close();
+
+    return 0;
+}
