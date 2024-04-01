@@ -14,6 +14,30 @@ using namespace std;
 int commonChild(string s1, string s2)
 {
     int n = s1.size();
+    vector<vector<int>> vec(n, vector<int>(n, 0));
+    
+    for (int i = 0; i < n; ++i)
+    {
+        for (int j = 0; j < n; ++j)
+        {
+            if (s1[i] == s2[j])
+            {
+                vec[i][j] = (i > 0 && j > 0) ? vec[i - 1][j - 1] + 1 : 1;
+            }
+            else
+            {
+                vec[i][j] = max((i > 0) ? vec[i - 1][j] : 0, (j > 0) ? vec[i][j - 1] : 0);
+            }
+        }
+    }
+
+    return vec[n - 1][n - 1];
+}
+
+
+int commonChild2(string s1, string s2)
+{
+    int n = s1.size();
     vector<vector<int>> vec(n, vector<int>(n,0));
     
     for (int i = 0; i < n; ++i)
