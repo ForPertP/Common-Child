@@ -27,6 +27,30 @@ class Result
     public static int commonChild(string s1, string s2)
     {
         int n = s1.Length;
+        int[,] vec = new int[n, n];
+
+        for (int i = 0; i < n; ++i)
+        {
+            for (int j = 0; j < n; ++j)
+            {
+                if (s1[i] == s2[j])
+                {
+                    vec[i, j] = (i > 0 && j > 0) ? vec[i - 1, j - 1] + 1 : 1;
+                }
+                else
+                {
+                    vec[i, j] = Math.Max((i > 0) ? vec[i - 1, j] : 0, (j > 0) ? vec[i, j - 1] : 0);
+                }
+            }
+        }
+
+        return vec[n - 1, n - 1];
+    }
+    
+    
+    public static int commonChild2(string s1, string s2)
+    {
+        int n = s1.Length;
         List<List<int>> vec = new List<List<int>>();
 
         for (int i = 0; i < n; ++i)
