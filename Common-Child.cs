@@ -24,7 +24,7 @@ class Result
      *  2. STRING s2
      */
 
-    public static int commonChild2(string s1, string s2)
+    public static int commonChild(string s1, string s2)
     {
         int n = s1.Length;
         int[,] vec = new int[n, n];
@@ -48,7 +48,7 @@ class Result
     }
     
     
-    public static int commonChild(string s1, string s2)
+    public static int commonChild2(string s1, string s2)
     {
         int n = s1.Length;
         List<List<int>> vec = new List<List<int>>();
