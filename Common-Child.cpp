@@ -60,10 +60,10 @@ int commonChild2(string s1, string s2)
     {
         for (int j=1; j<n; ++j)
         {
-            vec[i][j] = std::max(vec[i-1][j], vec[i][j-1]);
-            
-            if(s1[i] == s2[j])
+            if (s1[i] == s2[j])
                 vec[i][j] = std::max(1+vec[i-1][j-1], vec[i][j]);
+            else
+                vec[i][j] = std::max(vec[i-1][j], vec[i][j-1]);
         }
     }
 
