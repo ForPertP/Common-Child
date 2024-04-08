@@ -22,6 +22,33 @@ class Result {
      */
 
     public static int commonChild(String s1, String s2) {
+        int n = s1.length();
+        int[][] vec = new int[n][n];
+        
+        for (int i = 0; i < n; ++i) {
+            if (s1.charAt(i) == s2.charAt(0))
+                vec[i][0] = 1;
+            else
+                vec[i][0] = (i >= 1) ? vec[i-1][0] : 0;
+        }
+        
+        for (int j = 0; j < n; ++j) {
+            if (s1.charAt(0) == s2.charAt(j))
+                vec[0][j] = 1;
+            else
+                vec[0][j] = (j >= 1) ? vec[0][j-1] : 0;
+        }
+
+        for (int i = 1; i < n; ++i) {
+            for (int j = 1; j < n; ++j) {
+                if (s1.charAt(i) == s2.charAt(j))
+                    vec[i][j] = Math.max(1 + vec[i-1][j-1], vec[i][j]);
+                else
+                    vec[i][j] = Math.max(vec[i-1][j], vec[i][j-1]);
+            }
+        }
+
+        return vec[n-1][n-1];        
     }
 }
 
