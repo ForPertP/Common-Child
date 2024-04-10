@@ -24,6 +24,24 @@ class Result {
     public static int commonChild(String s1, String s2) {
         int n = s1.length();
         int[][] vec = new int[n][n];
+
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j < n; ++j) {
+                if (s1.charAt(i) == s2.charAt(j)) {
+                    vec[i][j] = (i > 0 && j > 0) ? vec[i - 1][j - 1] + 1 : 1;
+                } else {
+                    vec[i][j] = Math.max((i > 0) ? vec[i - 1][j] : 0, (j > 0) ? vec[i][j - 1] : 0);
+                }
+            }
+        }
+
+        return vec[n - 1][n - 1];
+    }
+
+
+    public static int commonChild2(String s1, String s2) {
+        int n = s1.length();
+        int[][] vec = new int[n][n];
         
         for (int i = 0; i < n; ++i) {
             if (s1.charAt(i) == s2.charAt(0))
